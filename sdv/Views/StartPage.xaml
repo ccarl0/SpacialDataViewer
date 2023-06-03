@@ -82,6 +82,7 @@
                 Spacing="16">
 
                 <Label
+                    x:Name="introTitleLabel"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource IntroPageHeaderStyle}"
@@ -89,6 +90,7 @@
 
 
                 <Label
+                    x:Name="introTextLabel"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     LineBreakMode="WordWrap"
@@ -96,15 +98,26 @@
                     Text="This is a space related data aggregator, ready to explore?"/>
 
                 <Button
+                    x:Name="introButton"
                     Style="{StaticResource ButtonStyle}"
                     Text="Lift Off!"
                     HorizontalOptions="Center"
                     Margin="0,12,0,6"
-                    Clicked="ExploreNow_Clicked"/>
+                    Clicked="LiftOffButton_Clicked"/>
 
             </VerticalStackLayout>
-
         </Border>
+
+        <Image
+            x:Name="spaceshuttleIcon"
+            Opacity="1"
+            Source="space_shuttle.png"
+            VerticalOptions="Start"
+            HorizontalOptions="Center"
+            TranslationX="0"
+            TranslationY="1000"
+            WidthRequest="200"
+            HeightRequest="200"/>
 
     </Grid>
     
