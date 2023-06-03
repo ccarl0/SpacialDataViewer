@@ -55,6 +55,7 @@
 	  <None Remove="Resources\Images\jaxa_logo.svg" />
 	  <None Remove="Resources\Images\nasa_logo.svg" />
 	  <None Remove="Resources\Images\spacex_logo.svg" />
+	  <None Remove="Resources\Images\space_shuttle.svg" />
 	  <None Remove="Resources\Splash\splash.svg" />
 	</ItemGroup>
 
