@@ -103,6 +103,9 @@
                     Text="Lift Off!"
                     HorizontalOptions="Center"
                     Margin="0,12,0,6"
+                    TranslationX="0"
+                    TranslationY="-100"
+                    Opacity="0"
                     Clicked="LiftOffButton_Clicked"/>
 
             </VerticalStackLayout>
