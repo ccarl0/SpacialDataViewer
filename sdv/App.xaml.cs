@@ -1,4 +1,6 @@
-﻿namespace sdv;
+﻿using sdv.Views;
+
+namespace sdv;
 
 public partial class App : Application
 {
@@ -6,6 +8,9 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new AppShell();
+		MainPage = new StartPage();
+
+		Routing.RegisterRoute("settings", typeof(SettingsPage));
+		Routing.RegisterRoute("dashboard", typeof(DashboardPage));
 	}
 }

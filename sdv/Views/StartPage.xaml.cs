@@ -10,52 +10,46 @@ public partial class StartPage : ContentPage
 		InitializeComponent();
         random = new Random();
     }
-
-    
-
+#if DEBUG
     protected override async void OnAppearing()
     {
+
         base.OnAppearing();
 
         if (this.AnimationIsRunning("TransitionAnimation"))
             return;
 
-        //if (VersionTracking.IsFirstLaunchForBuild(VersionTracking.CurrentBuild))
-        //{
-        //    var parentAnimation = new Animation
-        //    {
-        //        { 0.1, 0.25, new Animation(v => esaLogo.Opacity = v, 0, 1, Easing.CubicIn) },
-        //        { 0.19, 0.4, new Animation(v => boeingLogo.Opacity = v, 0, 1, Easing.CubicIn) },
-        //        { 0.35, 0.5, new Animation(v => jaxaLogo.Opacity = v, 0, 1, Easing.CubicIn) },
-        //        { 0.5, 0.63, new Animation(v => nasaLogo.Opacity = v, 0, 1, Easing.CubicIn) },
-        //        { 0.6, 0.75, new Animation(v => spacexLogo.Opacity = v, 0, 1, Easing.CubicIn) },
+        var parentAnimation = new Animation
+            {
+                { 0.1, 0.25, new Animation(v => esaLogo.Opacity = v, 0, 1, Easing.CubicIn) },
+                { 0.23, 0.31, new Animation(v => boeingLogo.Opacity = v, 0, 1, Easing.CubicIn) },
+                { 0.3, 0.4, new Animation(v => jaxaLogo.Opacity = v, 0, 1, Easing.CubicIn) },
+                { 0.39, 0.46, new Animation(v => nasaLogo.Opacity = v, 0, 1, Easing.CubicIn) },
+                { 0.45, 0.53, new Animation(v => spacexLogo.Opacity = v, 0, 1, Easing.CubicIn) },
 
-        //        { 0.9,1, new Animation(v => sdvIntro.Opacity = v, 0, 1, Easing.CubicIn) },
-        //        { 0.8,1, new Animation(v => sdvIntro.TranslationY = v, -1000, 0, Easing.SinOut) }
-        //    };
-        //    //Commit the animation
-        //    parentAnimation.Commit(this, "TransitionAnimation", 10, 3000, null, null, null);
-        //}
+                { 0.49,0.7, new Animation(v => sdvIntro.TranslationY = v, 1000, 0, Easing.SinOut) },
+                { 0.5,0.7, new Animation(v => sdvIntro.Opacity = v, 0, 1, Easing.CubicIn) },
 
-        //else
-        //{
-        //    var parentAnimation = new Animation
-        //    {
-        //        { 0.15, 0.25, new Animation(v => esaLogo.Opacity = v, 0, 1, Easing.CubicIn) },
-        //        { 0.25, 0.35, new Animation(v => boeingLogo.Opacity = v, 0, 1, Easing.CubicIn) },
-        //        { 0.35, 0.45, new Animation(v => jaxaLogo.Opacity = v, 0, 1, Easing.CubicIn) },
-        //        { 0.45, 0.55, new Animation(v => nasaLogo.Opacity = v, 0, 1, Easing.CubicIn) },
-        //        { 0.55, 0.65, new Animation(v => spacexLogo.Opacity = v, 0, 1, Easing.CubicIn) },
+                { 0.8,1, new Animation(v => introButton.TranslationY = v, -100, 0, Easing.SinOut) },
+                { 0.84,1, new Animation(v => introButton.Opacity = v, 0, 1, Easing.SinInOut) }
+            };
 
-        //        { 0.63,0.77, new Animation(v => sdvIntro.Opacity = v, 0, 1, Easing.CubicIn) },
-        //        { 0.64,0.85, new Animation(v => sdvIntro.TranslationY = v, 1000, 0, Easing.SinOut) },
-        //        { 0.9,1, new Animation(v => introButton.TranslationY = v, -100, 0, Easing.SinOut) },
-        //        { 0.93,0.98, new Animation(v => introButton.Opacity = v, 0, 1, Easing.SinInOut) }
-        //    };
+        //Commit the animation
+        parentAnimation.Commit(this, "TransitionAnimation", 10, 10, null, null, null);
+    }
+    void LiftOffButton_Clicked(System.Object sender, System.EventArgs e)
+    {
+        Application.Current.MainPage = new AppShell();
+    }
+#else
 
-        //    //Commit the animation
-        //    parentAnimation.Commit(this, "TransitionAnimation", 50, 3500, null, null, null);
-        //}
+protected override async void OnAppearing()
+    {
+
+        base.OnAppearing();
+
+        if (this.AnimationIsRunning("TransitionAnimation"))
+            return;
 
         var parentAnimation = new Animation
             {
@@ -74,8 +68,6 @@ public partial class StartPage : ContentPage
 
         //Commit the animation
         parentAnimation.Commit(this, "TransitionAnimation", 50, 3000, null, null, null);
-
-
     }
 
     async void LiftOffButton_Clicked(System.Object sender, System.EventArgs e)
@@ -117,6 +109,7 @@ public partial class StartPage : ContentPage
 
         await animationTaskCompletionSource.Task;
 
-        Application.Current.MainPage = new NavigationPage(new DashboardPage());
+        Application.Current.MainPage = new AppShell();
     }
+#endif
 }
