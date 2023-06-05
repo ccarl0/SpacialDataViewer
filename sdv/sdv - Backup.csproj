@@ -58,10 +58,6 @@
 	  <None Remove="Resources\Images\space_shuttle.svg" />
 	  <None Remove="Resources\Raw\planet.json" />
 	  <None Remove="Resources\Raw\rocket_lottie.json" />
-	  <None Remove="Resources\Raw\rocket_straight.json" />
-	  <None Remove="Resources\Raw\satelliteorbiting.json" />
-	  <None Remove="Resources\Raw\solar_system.json" />
-	  <None Remove="Resources\Raw\solar_system_nolines.json" />
 	  <None Remove="Resources\Splash\splash.svg" />
 	</ItemGroup>
 

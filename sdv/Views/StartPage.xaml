@@ -132,8 +132,11 @@
             RepeatCount="-1"
             VerticalOptions="FillAndExpand"
             Rotation="320"
-            HeightRequest="300" ScaleX="1" ScaleY="1" TranslationX="-50" TranslationY="600"/>
-
+            HeightRequest="300" 
+            ScaleX="1" 
+            ScaleY="1" 
+            TranslationX="-50" 
+            TranslationY="600"/>
     </Grid>
     
 </ContentPage>

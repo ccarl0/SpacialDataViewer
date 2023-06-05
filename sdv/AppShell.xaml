@@ -10,12 +10,24 @@
     Shell.FlyoutBehavior="Flyout"
     Title="Spacial Data Viewer"
     Shell.FlyoutIcon="menu_icon.png"
-    FlyoutBackgroundImage="menu_icon.png">
+    Shell.FlyoutWidth="200" >
 
     <Shell.FlyoutHeader>
         <controls:FlyoutHeader/>
     </Shell.FlyoutHeader>
+
+
+    <Shell.FlyoutBackground>
+        <LinearGradientBrush>
+            <GradientStop
+                          Offset="0.1" Color="#7F463CAB" />
+            <GradientStop Color="#7F211C52"
+                          Offset="1.0" />
+        </LinearGradientBrush>
+    </Shell.FlyoutBackground>
     
+
+
     <FlyoutItem Title="Dashboard" Icon="menu_icon.png">
         <ShellContent 
             ContentTemplate="{DataTemplate views:DashboardPage}"
