@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
              x:Class="sdv.Views.StartPage"
              FlyoutItem.IsVisible="False"
              Title="">
@@ -111,7 +112,7 @@
             </VerticalStackLayout>
         </Border>
 
-        <Image
+        <!--<Image
             x:Name="spaceshuttleIcon"
             Opacity="1"
             Source="space_shuttle.png"
@@ -120,7 +121,18 @@
             TranslationX="0"
             TranslationY="1000"
             WidthRequest="200"
-            HeightRequest="200"/>
+            HeightRequest="200"/>-->
+
+
+        <skia:SKLottieView 
+            x:Name="rocketSKLottieView"
+            HorizontalOptions="FillAndExpand"
+            Source="rocket_lottie.json"
+            RepeatMode="Restart"
+            RepeatCount="-1"
+            VerticalOptions="FillAndExpand"
+            Rotation="320"
+            HeightRequest="300" ScaleX="1" ScaleY="1" TranslationX="-50" TranslationY="600"/>
 
     </Grid>
     
