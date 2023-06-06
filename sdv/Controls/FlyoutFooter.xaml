@@ -2,20 +2,12 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
-             x:Class="sdv.Controls.FlyoutFooter">
+             x:Class="sdv.Controls.FlyoutFooter"
+             xmlns:local="clr-namespace:sdv">
     <VerticalStackLayout>
-        <skia:SKLottieView 
-            x:Name="footerSKLottieView"
-            HorizontalOptions="FillAndExpand"
-            Source="solar_system_nolines.json"
-            RepeatMode="Restart"
-            RepeatCount="-1"
-            VerticalOptions="FillAndExpand"
-            HeightRequest="100"
-            TranslationY="60"
-            TranslationX="-60"/>
+        <Image Source="dsv_notext.png"/>
 
-       
-            
+
+
     </VerticalStackLayout>
 </ContentView>

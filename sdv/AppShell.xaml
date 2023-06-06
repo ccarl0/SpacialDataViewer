@@ -4,13 +4,15 @@
     x:Class="sdv.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
     xmlns:local="clr-namespace:sdv"
     xmlns:views="clr-namespace:sdv.Views"
     xmlns:controls="clr-namespace:sdv.Controls"
     Shell.FlyoutBehavior="Flyout"
     Title="Spacial Data Viewer"
     Shell.FlyoutIcon="menu_icon.png"
-    Shell.FlyoutWidth="200" >
+    Shell.FlyoutWidth="200"
+    Shell.NavBarIsVisible="False">
 
     <Shell.FlyoutHeader>
         <controls:FlyoutHeader/>
@@ -25,21 +27,85 @@
                           Offset="1.0" />
         </LinearGradientBrush>
     </Shell.FlyoutBackground>
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Image 
+                    Source="{Binding FlyoutIcon}"
+                    HeightRequest="28"/>
+                   
+                <Label 
+                    Grid.Column="1"
+                    Text="{Binding Title}"
+                    FontSize="Body"
+                    Margin="0,10,0,10"
+                    FontAttributes="Italic"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <FlyoutItem>
+        
+    </FlyoutItem>
+    
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent 
+            Title="Imagery"
+            Icon="imagery.png"
+            Shell.NavBarIsVisible="False"
+            ContentTemplate="{DataTemplate views:SettingsPage}" />
+        <ShellContent 
+            Title="Layers"
+            Icon="layer.png"
+            ContentTemplate="{DataTemplate views:SettingsPage}" />
+
+        <ShellContent 
+            Title="Time Machine"
+            Icon="clock.ong"
+            ContentTemplate="{DataTemplate views:DashboardPage}" />
+        
+        <ShellContent 
+            Title="Data Viewer"
+            Icon="data.png"
+            ContentTemplate="{DataTemplate views:ImageryPage}" />
+
+        <ShellContent 
+            Title="Settings"
+            Icon="settings.png"
+            ContentTemplate="{DataTemplate views:ImageryPage}" />
+        
+        <ShellContent 
+            Title="About"
+            Icon="credit.png"
+            ContentTemplate="{DataTemplate views:ImageryPage}" />
+    </FlyoutItem>
+
+    <!--<Shell.MenuItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="0.2*,0.8*">
+                <Image Source="{Binding Icon}"
+                       Margin="5"
+                       HeightRequest="45" />
+                <Label Grid.Column="1"
+                       Text="{Binding Text}"
+                       FontAttributes="Italic"
+                       VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>-->
+
     
 
+    
 
-    <FlyoutItem Title="Dashboard" Icon="menu_icon.png">
-        <ShellContent 
-            ContentTemplate="{DataTemplate views:DashboardPage}"
-        />
-    </FlyoutItem>
-
-
-    <FlyoutItem Title="Settings" Icon="menu_icon.png">
-        <ShellContent 
-            ContentTemplate="{DataTemplate views:SettingsPage}"
-        />
-    </FlyoutItem>
+   
 
     <Shell.FlyoutFooter>
         <controls:FlyoutFooter/>

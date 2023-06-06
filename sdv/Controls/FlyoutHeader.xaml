@@ -7,7 +7,7 @@
         <skia:SKLottieView 
             x:Name="headerSKLottieView"
             HorizontalOptions="FillAndExpand"
-            Source="satelliteorbiting.json"
+            Source="solar_system.json"
             RepeatMode="Restart"
             RepeatCount="-1"
             VerticalOptions="FillAndExpand"

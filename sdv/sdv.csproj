@@ -51,15 +51,22 @@
 	  <None Remove="Platforms\Android\Resources\values\colors.xml" />
 	  <None Remove="Resources\AppIcon\appicon.svg" />
 	  <None Remove="Resources\Images\boeing_logo.svg" />
+	  <None Remove="Resources\Images\clock.svg" />
+	  <None Remove="Resources\Images\credit.svg" />
+	  <None Remove="Resources\Images\data.svg" />
 	  <None Remove="Resources\Images\esa_logo.svg" />
+	  <None Remove="Resources\Images\imagery.svg" />
 	  <None Remove="Resources\Images\jaxa_logo.svg" />
+	  <None Remove="Resources\Images\layer.svg" />
 	  <None Remove="Resources\Images\nasa_logo.svg" />
+	  <None Remove="Resources\Images\settings.svg" />
 	  <None Remove="Resources\Images\spacex_logo.svg" />
 	  <None Remove="Resources\Images\space_shuttle.svg" />
 	  <None Remove="Resources\Raw\planet.json" />
 	  <None Remove="Resources\Raw\rocket_lottie.json" />
 	  <None Remove="Resources\Raw\rocket_straight.json" />
 	  <None Remove="Resources\Raw\satelliteorbiting.json" />
+	  <None Remove="Resources\Raw\satellite_imagery.json" />
 	  <None Remove="Resources\Raw\solar_system.json" />
 	  <None Remove="Resources\Raw\solar_system_nolines.json" />
 	  <None Remove="Resources\Splash\splash.svg" />
@@ -82,6 +89,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\DashboardPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ImageryPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\SettingsPage.xaml">
