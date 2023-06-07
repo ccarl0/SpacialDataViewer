@@ -60,31 +60,31 @@
             Title="Imagery"
             Icon="imagery.png"
             Shell.NavBarIsVisible="False"
-            ContentTemplate="{DataTemplate views:SettingsPage}" />
+            ContentTemplate="{DataTemplate views:ImageryPage}" />
         <ShellContent 
             Title="Layers"
             Icon="layer.png"
-            ContentTemplate="{DataTemplate views:SettingsPage}" />
+            ContentTemplate="{DataTemplate views:LayersPage}" />
 
         <ShellContent 
             Title="Time Machine"
             Icon="clock.ong"
-            ContentTemplate="{DataTemplate views:DashboardPage}" />
+            ContentTemplate="{DataTemplate views:TimeMachinePage}" />
         
         <ShellContent 
             Title="Data Viewer"
             Icon="data.png"
-            ContentTemplate="{DataTemplate views:ImageryPage}" />
+            ContentTemplate="{DataTemplate views:DataPage}" />
 
         <ShellContent 
             Title="Settings"
             Icon="settings.png"
-            ContentTemplate="{DataTemplate views:ImageryPage}" />
+            ContentTemplate="{DataTemplate views:SettingsPage}" />
         
         <ShellContent 
             Title="About"
             Icon="credit.png"
-            ContentTemplate="{DataTemplate views:ImageryPage}" />
+            ContentTemplate="{DataTemplate views:AboutPage}" />
     </FlyoutItem>
 
     <!--<Shell.MenuItemTemplate>
