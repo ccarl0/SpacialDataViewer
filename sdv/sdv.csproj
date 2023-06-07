@@ -97,6 +97,9 @@
 	  <MauiXaml Update="Views\DataPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\ImageryChildPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\ImageryPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

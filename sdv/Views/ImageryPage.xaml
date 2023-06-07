@@ -1,21 +1,19 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:sdv.Views"
              x:Class="sdv.Views.ImageryPage"
              Title="ImageryPage">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
+    <RefreshView>
+        <ScrollView>
+            <Grid Background="Red">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-        <Frame></Frame>
-        <Frame></Frame>
-    </Grid>
+                <Label Text="Imagery" FontSize="30" HorizontalOptions="Center" Grid.Row="0" />
+                <views:ImageryChildPage Grid.Row="1" />
+            </Grid>
+        </ScrollView>
+    </RefreshView>
 </ContentPage>

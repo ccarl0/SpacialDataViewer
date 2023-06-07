@@ -87,25 +87,6 @@
             ContentTemplate="{DataTemplate views:AboutPage}" />
     </FlyoutItem>
 
-    <!--<Shell.MenuItemTemplate>
-        <DataTemplate>
-            <Grid ColumnDefinitions="0.2*,0.8*">
-                <Image Source="{Binding Icon}"
-                       Margin="5"
-                       HeightRequest="45" />
-                <Label Grid.Column="1"
-                       Text="{Binding Text}"
-                       FontAttributes="Italic"
-                       VerticalTextAlignment="Center" />
-            </Grid>
-        </DataTemplate>
-    </Shell.MenuItemTemplate>-->
-
-    
-
-    
-
-   
 
     <Shell.FlyoutFooter>
         <controls:FlyoutFooter/>
