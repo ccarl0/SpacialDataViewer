@@ -5,14 +5,30 @@
              Title="ImageryPage">
     <RefreshView>
         <ScrollView>
-            <Grid Background="Red">
+            <Grid BackgroundColor="Transparent">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
+                <Border
+                    Padding="24,32"
+                    BackgroundColor="{StaticResource FrameBackgroundColor}"
+                    Stroke="{StaticResource BorderColor}"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="End"
+                    Margin="1">
 
-                <Label Text="Imagery" FontSize="30" HorizontalOptions="Center" Grid.Row="0" />
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="24"/>
+                    </Border.StrokeShape>
+                    
+                    <Label Text="Imagery" FontSize="30" HorizontalOptions="Center" Grid.Row="0" />
+                </Border>
+                
+                
+                <!--childpage-->
                 <views:ImageryChildPage Grid.Row="1" />
+                
             </Grid>
         </ScrollView>
     </RefreshView>
