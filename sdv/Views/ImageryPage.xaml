@@ -3,33 +3,104 @@
              xmlns:views="clr-namespace:sdv.Views"
              x:Class="sdv.Views.ImageryPage"
              Title="ImageryPage">
-    <RefreshView>
-        <ScrollView>
-            <Grid BackgroundColor="Transparent">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Border
-                    Padding="24,32"
-                    BackgroundColor="{StaticResource FrameBackgroundColor}"
-                    Stroke="{StaticResource BorderColor}"
-                    HorizontalOptions="Fill"
-                    VerticalOptions="End"
-                    Margin="1">
+    <ContentPage.Content>
+        <FlexLayout Direction="Column" TranslationY="-50">
+            <!--title page-->
+            <Frame
+                BackgroundColor="#B24194DC"
+                Padding="5"
+                CornerRadius="50"
+                HeightRequest="50"
+                TranslationY="85"
+                HorizontalOptions="CenterAndExpand">
+                <StackLayout>
+                    <Label 
+                        Text="Imagery"
+                        FontSize="40"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" 
+                        TranslationY="-10"
+                        Margin="20,0"
+                    />
+                </StackLayout>
+            </Frame>
 
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="24"/>
-                    </Border.StrokeShape>
-                    
-                    <Label Text="Imagery" FontSize="30" HorizontalOptions="Center" Grid.Row="0" />
-                </Border>
-                
-                
-                <!--childpage-->
-                <views:ImageryChildPage Grid.Row="1" />
-                
-            </Grid>
-        </ScrollView>
-    </RefreshView>
+            <!--options button-->
+            <Frame
+                BackgroundColor="#B24194DC"
+                CornerRadius="1000000"
+                TranslationX="340"
+                TranslationY="69"
+                HeightRequest="50"
+                WidthRequest="50"
+                Padding="10" 
+                >
+                <StackLayout>
+                    <Image
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Source="settings.png"
+                        Scale="1"
+                        Margin="0"
+                        >
+                    </Image>
+                </StackLayout>
+            </Frame>
+
+            
+            <!--tiles-->
+            <RefreshView>
+                <ScrollView>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="120"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        
+                        <Frame 
+                            Grid.Row="1" 
+                            Margin="5" 
+                            CornerRadius="30"
+                            BackgroundColor="Transparent"
+                            BorderColor="Gray">
+                            
+                            <Label Text="NASA"/>
+                            
+                        </Frame>
+
+                        <Frame 
+                            Grid.Row="2" 
+                            Margin="5" 
+                            CornerRadius="30"
+                            BackgroundColor="Transparent"
+                            BorderColor="Gray">
+                            
+                            <Label Text="ESA"/>
+
+                        </Frame>
+
+                        <Frame 
+                            Grid.Row="3" 
+                            Margin="5" 
+                            CornerRadius="30"
+                            BackgroundColor="Transparent"
+                            BorderColor="Gray">
+
+                            <Label Text="SpaceX"/>
+
+                        </Frame>
+
+                       
+                        
+
+                    </Grid>
+                </ScrollView>
+            </RefreshView>
+
+        </FlexLayout>
+    </ContentPage.Content>
 </ContentPage>
