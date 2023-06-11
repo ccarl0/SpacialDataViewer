@@ -76,7 +76,7 @@
             Icon="data.png"
             ContentTemplate="{DataTemplate views:DataPage}" />
 
-        <!--<ShellContent 
+        <ShellContent 
             Title="Settings"
             Icon="settings.png"
             ContentTemplate="{DataTemplate views:SettingsPage}" />
@@ -84,7 +84,7 @@
         <ShellContent 
             Title="About"
             Icon="credit.png"
-            ContentTemplate="{DataTemplate views:AboutPage}" />-->
+            ContentTemplate="{DataTemplate views:AboutPage}" />
     </FlyoutItem>
 
 
