@@ -72,6 +72,8 @@
                             <StackLayout>
                                 <Label Text="NASA"/>
 
+                                <Label x:Name="test"/>
+
                                 <Image
                                 x:Name="Nasa_Image"
                                 
