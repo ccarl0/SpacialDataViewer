@@ -1,8 +1,18 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:sdv"
              xmlns:views="clr-namespace:sdv.Views"
+             xmlns:viewModels="clr-namespace:sdv.ViewModels"
+             xmlns:models="clr-namespace:sdv.Models"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading;assembly=FFImageLoading.Platform"
+             x:DataType="viewModels:ImageryViewModel"
              x:Class="sdv.Views.ImageryPage"
              Title="ImageryPage">
+
+    <ContentPage.BindingContext>
+        <viewModels:ImageryViewModel/>
+    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
         <FlexLayout Direction="Column" TranslationY="-50">
             <!--title page-->
@@ -49,7 +59,7 @@
 
             
             <!--tiles-->
-            <RefreshView>
+            <RefreshView Command="{Binding UpdateImageryCommand}" IsRefreshing="{Binding IsRefreshing}">
                 <ScrollView>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -70,10 +80,11 @@
                             BorderColor="Gray">
 
                             <StackLayout>
-                                <Label Text="NASA"/>
-
-                                <Label x:Name="test"/>
-
+                                <Label Text="NASA - APOD"/>
+                                <Label Text="{Binding IsRefreshing}"/>
+                                <Label Text="{Binding UpcomingLaunchesSpaceX.Count}"/>
+                                <Label Text="w la figa"/>
+                                
                                 <Image
                                 x:Name="Nasa_Image"
                                 
@@ -112,12 +123,19 @@
                             BorderColor="Gray">
 
                             <StackLayout>
-                                <Label Text="SpaceX"/>
+                                <Label Text="SpaceX - Upcoming Launches"/>
+                                <CollectionView ItemsSource="{Binding UpcomingLaunchesSpaceX}">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate x:DataType="models:UpcomingLaunchesRoot">
+                                            <StackLayout>
 
-                                <Image
-                                x:Name="Spacex_Image"
-                                
-                                />
+                                                <Image Source="https://aka.ms/campus.jpg" />
+
+                                                
+                                            </StackLayout>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
                             </StackLayout>
 
                         </Frame>

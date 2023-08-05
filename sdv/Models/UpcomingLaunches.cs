@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 namespace sdv.Models
 {
     // Root myDeserializedClass = JsonSerializer.Deserialize<List<Root>>(myJsonResponse);
+    // Root myDeserializedClass = JsonSerializer.Deserialize<List<Root>>(myJsonResponse);
     public class Core
     {
         [JsonPropertyName("core")]
-        public string CoreProp { get; set; }
+        public string CoreAPI { get; set; }
 
         [JsonPropertyName("flight")]
         public int? Flight { get; set; }
@@ -113,7 +114,7 @@ namespace sdv.Models
         public string Recovery { get; set; }
     }
 
-    public class UcLaunches
+    public class UpcomingLaunchesRoot
     {
         [JsonPropertyName("fairings")]
         public Fairings Fairings { get; set; }
@@ -128,7 +129,7 @@ namespace sdv.Models
         public object StaticFireDateUnix { get; set; }
 
         [JsonPropertyName("net")]
-        public bool Net { get; set; }
+        public bool? Net { get; set; }
 
         [JsonPropertyName("window")]
         public object Window { get; set; }
@@ -161,34 +162,34 @@ namespace sdv.Models
         public string Launchpad { get; set; }
 
         [JsonPropertyName("flight_number")]
-        public int FlightNumber { get; set; }
+        public int? FlightNumber { get; set; }
 
         [JsonPropertyName("name")]
         public string Name { get; set; }
 
         [JsonPropertyName("date_utc")]
-        public DateTime DateUtc { get; set; }
+        public DateTime? DateUtc { get; set; }
 
         [JsonPropertyName("date_unix")]
-        public int DateUnix { get; set; }
+        public int? DateUnix { get; set; }
 
         [JsonPropertyName("date_local")]
-        public DateTime DateLocal { get; set; }
+        public DateTime? DateLocal { get; set; }
 
         [JsonPropertyName("date_precision")]
         public string DatePrecision { get; set; }
 
         [JsonPropertyName("upcoming")]
-        public bool Upcoming { get; set; }
+        public bool? Upcoming { get; set; }
 
         [JsonPropertyName("cores")]
         public List<Core> Cores { get; set; }
 
         [JsonPropertyName("auto_update")]
-        public bool AutoUpdate { get; set; }
+        public bool? AutoUpdate { get; set; }
 
         [JsonPropertyName("tbd")]
-        public bool Tbd { get; set; }
+        public bool? Tbd { get; set; }
 
         [JsonPropertyName("launch_library_id")]
         public string LaunchLibraryId { get; set; }
@@ -196,6 +197,7 @@ namespace sdv.Models
         [JsonPropertyName("id")]
         public string Id { get; set; }
     }
+
 
 
 }

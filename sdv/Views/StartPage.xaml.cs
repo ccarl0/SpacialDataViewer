@@ -4,13 +4,11 @@ namespace sdv.Views;
 
 public partial class StartPage : ContentPage
 {
-    private Random random;
     public StartPage()
     {
         InitializeComponent();
-        random = new Random();
     }
-   protected override async void OnAppearing()
+    protected override void OnAppearing()
     {
         base.OnAppearing();
 
