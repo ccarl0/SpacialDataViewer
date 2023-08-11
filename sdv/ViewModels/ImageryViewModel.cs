@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using sdv.Models;
+using sdv.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,10 @@ namespace sdv.ViewModels
     {
 
         [ObservableProperty]
-        List<UpcomingLaunchesRoot> upcomingLaunchesSpaceX;
+        List<UpcomingLaunchesRoot> upcomingLaunchesSpaceX; 
+        
+        [ObservableProperty]
+        List<NasaAPODRoot> nasaAPODs;
 
         [ObservableProperty]
         public bool isRefreshing;
@@ -30,37 +34,46 @@ namespace sdv.ViewModels
 
             try
             {
+                // Get the current date
+                DateTime currentDate = DateTime.Now;
+
+                // Calculate the date one month back
+                DateTime oneMonthBack = currentDate.AddMonths(-1);
+
+                // Properly formatted
+                string oneMonthBackDate = oneMonthBack.ToString("yyyy-MM-dd");
+
                 // Send GET request to the API
-                var request = new HttpRequestMessage(HttpMethod.Get, "https://api.spacexdata.com/v4/launches/upcoming");
+                var request = new HttpRequestMessage(HttpMethod.Get, $"https://api.nasa.gov/planetary/apod?start_date={oneMonthBackDate}&api_key=0y29OS3mvF4FSFyBT04irdh5TLbAKCnlcLchKINJ");
+
+                //var request = new HttpRequestMessage(HttpMethod.Get, $"https://api.nasa.gov/planetary/apod?start_date=2023-08-01&api_key=0y29OS3mvF4FSFyBT04irdh5TLbAKCnlcLchKINJ");
 
                 var response = await client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
                 var res = await response.Content.ReadAsStringAsync();
 
-                List<UpcomingLaunchesRoot> upcomingLaunches = JsonSerializer.Deserialize<List<UpcomingLaunchesRoot>>(res);
+                List<NasaAPODRoot> nasaAPODs = JsonSerializer.Deserialize<List<NasaAPODRoot>>(res);
 
 
-                foreach (var item in upcomingLaunches)
-                {
-                    if (item.Links.Patch.Large == "null" || item.Links.Patch.Large == null)
-                    {
-                        item.Links.Patch.Large = "https://commons.wikimedia.org/w/index.php?title=File:SpaceX-Logo-Xonly.svg&lang=en#/media/File:SpaceX-Logo-Xonly.svg";
-                    }
-                }
-
-                UpcomingLaunchesSpaceX = upcomingLaunches;
+                NasaAPODs = nasaAPODs;
+                NasaAPODs.Reverse();
 
 
             }
             catch (Exception e)
             {
-                await App.Current.MainPage.DisplayAlert("Error - SpaceX", e.Message, "Ok");
+                await App.Current.MainPage.DisplayAlert("Error - NASA - APOD", e.Message, "Ok");
             }
             finally
             {
                 client.Dispose();
                 IsRefreshing = false;
             }
+        }
+        [RelayCommand]
+        async Task ApodInfoPage(NasaAPODRoot APODRoot)
+        {
+            await App.Current.MainPage.Navigation.PushAsync(new NasaAPODPage(APODRoot));
         }
     }
 

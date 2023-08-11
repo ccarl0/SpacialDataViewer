@@ -4,7 +4,6 @@
              xmlns:views="clr-namespace:sdv.Views"
              xmlns:viewModels="clr-namespace:sdv.ViewModels"
              xmlns:models="clr-namespace:sdv.Models"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading;assembly=FFImageLoading.Platform"
              x:DataType="viewModels:ImageryViewModel"
              x:Class="sdv.Views.ImageryPage"
              Title="ImageryPage">
@@ -61,38 +60,85 @@
             <!--tiles-->
             <RefreshView Command="{Binding UpdateImageryCommand}" IsRefreshing="{Binding IsRefreshing}">
                 <ScrollView>
-                    <Grid>
+                    <Grid Padding="0">
                         <Grid.ColumnDefinitions>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="120"></RowDefinition>
-                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="130"></RowDefinition>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        
-                        <Frame 
+
+                        <Frame
                             x:Name="Nasa_Tile"
-                            Grid.Row="1" 
-                            Margin="5" 
+                            Grid.Row="1"
+                            Margin="5"
                             CornerRadius="30"
                             BackgroundColor="Transparent"
                             BorderColor="Gray">
 
                             <StackLayout>
-                                <Label Text="NASA - APOD"/>
-                                <Label Text="{Binding IsRefreshing}"/>
-                                <Label Text="{Binding UpcomingLaunchesSpaceX.Count}"/>
-                                <Label Text="w la figa"/>
-                                
-                                <Image
-                                x:Name="Nasa_Image"
-                                
-                                />
-                            </StackLayout>
-                            
+                                <Label Text="NASA - APOD" />
 
+                                <!-- The CollectionView now wraps inside a Grid -->
+                                <Grid>
+                                    <CollectionView ItemsSource="{Binding NasaAPODs}">
+                                        <CollectionView.ItemsLayout>
+                                            <LinearItemsLayout Orientation="Horizontal" />
+                                        </CollectionView.ItemsLayout>
+
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate x:DataType="models:NasaAPODRoot">
+                                                <!-- Use Grid to properly position AsyncImage and Label -->
+                                                <Grid>
+                                                    <Grid.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ImageryViewModel}}, Path=ApodInfoPageCommand}" CommandParameter="{Binding .}"/>
+                                                    </Grid.GestureRecognizers>
+                                                    <!-- The AsyncImage control occupies the first row and column -->
+                                                    <local:AsyncImage
+                                                        ImageUrl="{Binding Url}"
+                                                        Aspect="AspectFill"
+                                                        Grid.Row="0"
+                                                        Grid.Column="0"
+                                                        HeightRequest="230"
+                                                        Margin="5"
+                                                        />
+
+                                                    <!-- The label will be displayed below the AsyncImage -->
+                                                    <Label Text="{Binding Title}"
+                                                        Grid.Row="1"
+                                                        Grid.Column="0"
+                                                        HorizontalOptions="Start"
+                                                        VerticalOptions="Start"
+                                                        TextColor="White"
+                                                        BackgroundColor="#484848"
+                                                        Opacity="0.7"
+                                                        FontSize="12"
+                                                        Margin="10"
+                                                        Padding="2,1"
+                                                        />
+
+
+                                                    <Label Text="{Binding Date}"
+                                                        Grid.Row="1"
+                                                        Grid.Column="0"
+                                                        HorizontalOptions="End"
+                                                        VerticalOptions="End"
+                                                        TextColor="White"
+                                                        BackgroundColor="#484848"
+                                                        Opacity="0.7"
+                                                        FontSize="10"
+                                                        Padding="2"
+                                                        Margin="10" 
+                                                        />
+                                                </Grid>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </Grid>
+                            </StackLayout>
                         </Frame>
+
 
                         <Frame 
                             x:Name="Esa_Tile"
@@ -102,7 +148,6 @@
                             BackgroundColor="Transparent"
                             BorderColor="Gray">
 
-
                             <StackLayout>
                                 <Label Text="ESA"/>
 
@@ -111,10 +156,9 @@
                                 
                                 />
                             </StackLayout>
-
                         </Frame>
 
-                        <Frame 
+                        <!--<Frame 
                             x:Name="SpaceX_Tile"
                             Grid.Row="3" 
                             Margin="5" 
@@ -124,24 +168,9 @@
 
                             <StackLayout>
                                 <Label Text="SpaceX - Upcoming Launches"/>
-                                <CollectionView ItemsSource="{Binding UpcomingLaunchesSpaceX}">
-                                    <CollectionView.ItemTemplate>
-                                        <DataTemplate x:DataType="models:UpcomingLaunchesRoot">
-                                            <StackLayout>
-
-                                                <Image Source="https://aka.ms/campus.jpg" />
-
-                                                
-                                            </StackLayout>
-                                        </DataTemplate>
-                                    </CollectionView.ItemTemplate>
-                                </CollectionView>
+                                <Label Text="Thank you whoever made a useless API"/>
                             </StackLayout>
-
-                        </Frame>
-
-                       
-                        
+                        </Frame>-->
 
                     </Grid>
                 </ScrollView>
