@@ -7,6 +7,7 @@ public partial class StartPage : ContentPage
     public StartPage()
     {
         InitializeComponent();
+
     }
     protected override void OnAppearing()
     {
@@ -40,6 +41,12 @@ public partial class StartPage : ContentPage
 
         var parentAnimation = new Animation
         {
+            //Intro Box Animation
+            { 0.2,0.3, new Animation(v => sdvIntro.Opacity = v, 1, 0, Easing.CubicIn) },
+            { 0.1,0.3, new Animation(v => introButton.TranslationY= v, introButton.TranslationY, 100, Easing.CubicIn) },
+            { 0.1,0.3, new Animation(v => introTitleLabel.TranslationX= v, introTitleLabel.TranslationX, 1000, Easing.CubicIn) },
+            { 0.1,0.3, new Animation(v => introTextLabel.TranslationX= v, introTextLabel.TranslationX, -1000, Easing.CubicIn) },
+
             //logos animation
             { 0.1, 0.23, new Animation(v => jaxaLogo.TranslationX = v, jaxaLogo.TranslationX, 1000, Easing.CubicIn) },
             { 0.18, 0.25, new Animation(v => boeingLogo.TranslationX = v, boeingLogo.TranslationX, -1000, Easing.CubicIn) },
@@ -47,26 +54,26 @@ public partial class StartPage : ContentPage
             { 0.28, 0.43, new Animation(v => spacexLogo.TranslationX = v, spacexLogo.TranslationX, -1000, Easing.CubicIn) },
             { 0.32, 0.5, new Animation(v => esaLogo.TranslationY = v, esaLogo.TranslationY, -1000, Easing.CubicIn) },
 
-            //Intro Box Animation
-            { 0.5,0.7, new Animation(v => sdvIntro.Opacity = v, 1, 0, Easing.CubicIn) },
-            { 0.46,0.525, new Animation(v => introButton.TranslationY= v, introButton.TranslationY, 100, Easing.CubicIn) },
-            { 0.5,0.6, new Animation(v => introTitleLabel.TranslationX= v, introTitleLabel.TranslationX, 1000, Easing.CubicIn) },
-            { 0.5,0.6, new Animation(v => introTextLabel.TranslationX= v, introTextLabel.TranslationX, -1000, Easing.CubicIn) },
-
-            //shuttle animation
-            { 0.6, 1, new Animation(v => rocketSKLottieView.TranslationY = v, rocketSKLottieView.TranslationY, -600, Easing.SinIn) },
-            { 0.6, 1, new Animation(v => rocketSKLottieView.TranslationX = v, rocketSKLottieView.TranslationX, 60, Easing.SinOut) },
         };
-
 
         var animationTaskCompletionSource = new TaskCompletionSource<bool>();
 
-        parentAnimation.Commit(this, "OpenDashboardAnimation", 5, 3200, finished: (d, b) =>
+
+        Task.Factory.StartNew(() =>
+        {
+            Thread.Sleep(1100);
+            rocketSKLottieView.IsAnimationEnabled = true;
+        });
+
+
+
+        parentAnimation.Commit(this, "OpenDashboardAnimation", 5, 4000, finished: (d, b) =>
         {
             animationTaskCompletionSource.SetResult(true);
         });
 
         await animationTaskCompletionSource.Task;
+
 
         Application.Current.MainPage = new AppShell();
     }

@@ -112,31 +112,20 @@
             </VerticalStackLayout>
         </Border>
 
-        <!--<Image
-            x:Name="spaceshuttleIcon"
-            Opacity="1"
-            Source="space_shuttle.png"
-            VerticalOptions="Start"
-            HorizontalOptions="Center"
-            TranslationX="0"
-            TranslationY="1000"
-            WidthRequest="200"
-            HeightRequest="200"/>-->
+        
 
 
         <skia:SKLottieView 
             x:Name="rocketSKLottieView"
             HorizontalOptions="FillAndExpand"
-            Source="rocket_lottie.json"
+            Source="rocket_app_launch.json"
             RepeatMode="Restart"
-            RepeatCount="-1"
-            VerticalOptions="FillAndExpand"
-            Rotation="320"
-            HeightRequest="300" 
+            RepeatCount="0"
+            VerticalOptions="Fill"
+            HeightRequest="1000" 
             ScaleX="1" 
-            ScaleY="1" 
-            TranslationX="-50" 
-            TranslationY="600"/>
+            ScaleY="1" IsAnimationEnabled="False" 
+            />
     </Grid>
     
 </ContentPage>
