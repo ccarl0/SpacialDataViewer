@@ -104,6 +104,6 @@ public partial class NasaAPODPage : ContentPage
         // Remove additional characters that might cause issues
         fileName = Regex.Replace(fileName, @"[/:?\\*|""<>\.]", "_");
 
-        return $"{fileName}.jpgl";
+        return $"{fileName}.jpg";
     }
 }
