@@ -37,28 +37,28 @@ namespace sdv.ViewModels
                 // Get the current date
                 DateTime currentDate = DateTime.Now;
 
-                // Calculate the date one month back
-                DateTime oneMonthBack = currentDate.AddDays(-5);
+                List<NasaAPODRoot> nasaAPODSBuffer = new();
 
-                // Properly formatted
-                string oneMonthBackDate = oneMonthBack.ToString("yyyy-MM-dd");
+                for (int i = 1; i < 31; i++)
+                {
+                    // Calculate the fetch date untill one month back
+                    DateTime fetchDate = currentDate.AddDays(-i);
 
-                // Send GET request to the API
-                var request = new HttpRequestMessage(HttpMethod.Get, $"https://api.nasa.gov/planetary/apod?start_date={oneMonthBackDate}&thumbs=True&api_key=jBR6BFhvvViOOlasSXpap8dKbpYs2nyWNY4Otum9");
+                    // Format date
+                    string fetchDateString = fetchDate.ToString("yyyy-MM-dd");
 
-                //var request = new HttpRequestMessage(HttpMethod.Get, $"https://api.nasa.gov/planetary/apod?start_date=2023-08-01&api_key=0y29OS3mvF4FSFyBT04irdh5TLbAKCnlcLchKINJ");
+                    // Send GET request to the API
+                    var request = new HttpRequestMessage(HttpMethod.Get, $"https://api.nasa.gov/planetary/apod?date={fetchDateString}&api_key=jBR6BFhvvViOOlasSXpap8dKbpYs2nyWNY4Otum9");
 
-                var response = await client.SendAsync(request);
-                response.EnsureSuccessStatusCode();
-                var res = await response.Content.ReadAsStringAsync();
-
-                List<NasaAPODRoot> nasaAPODs = JsonSerializer.Deserialize<List<NasaAPODRoot>>(res);
-
-
-                NasaAPODs = nasaAPODs;
-                NasaAPODs.Reverse();
+                    // Read response
+                    var response = await client.SendAsync(request);
+                    response.EnsureSuccessStatusCode();
+                    var res = await response.Content.ReadAsStringAsync();
 
 
+                    nasaAPODSBuffer.Add(JsonSerializer.Deserialize<NasaAPODRoot>(res));
+                    NasaAPODs = nasaAPODSBuffer;
+                }
             }
             catch (Exception e)
             {
