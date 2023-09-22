@@ -62,6 +62,7 @@
 	  <None Remove="Resources\Images\settings.svg" />
 	  <None Remove="Resources\Images\spacex_logo.svg" />
 	  <None Remove="Resources\Images\space_shuttle.svg" />
+	  <None Remove="Resources\Raw\animation_user.json" />
 	  <None Remove="Resources\Raw\planet.json" />
 	  <None Remove="Resources\Raw\rocket_lottie.json" />
 	  <None Remove="Resources\Raw\rocket_straight.json" />
